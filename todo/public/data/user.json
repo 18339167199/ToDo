@@ -1,0 +1,53 @@
+{
+  "group": [
+    {
+      "id": 1,
+      "name": "我的一天",
+      "type": 0,
+      "icon": "sun",
+      "count": 4
+    },
+    {
+      "id": 2,
+      "name": "重要",
+      "type": 0,
+      "icon": "sun",
+      "count": 4
+    },
+    {
+      "id": 3,
+      "name": "计划内",
+      "type": 0,
+      "icon": "sun",
+      "count": 4
+    },
+    {
+      "id": 4,
+      "name": "已分配给我",
+      "type": 0,
+      "icon": "sun",
+      "count": 4
+    },
+    {
+      "id": 5,
+      "name": "任务",
+      "type": 0,
+      "icon": "sun",
+      "count": 4
+    },
+    {
+      "id": 6,
+      "name": "入门",
+      "type": 1,
+      "icon": "sun",
+      "count": 4
+    },
+    {
+      "id": 7,
+      "name": "杂货",
+      "type": 1,
+      "icon": "sun",
+      "count": 4
+    }
+  ]
+}
