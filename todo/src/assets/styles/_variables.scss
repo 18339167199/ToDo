@@ -1,5 +1,14 @@
 $background: rgba(241, 241, 241, 1);
-$border: 1px solid #000;
+$border: 1px solid #dcdfe6;
 
 /** color **/
 $green: rgba(14, 123, 53);
+
+/** font **/
+$text-font-size: 16px;
+
+$default-transition-duration: .25s;
+@mixin transition($props, $duration) {
+  transition-property: #{$props};
+  transition-duration: $duration;
+}

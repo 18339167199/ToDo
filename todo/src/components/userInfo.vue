@@ -1,8 +1,8 @@
 <template>
-  <el-container class="user" :style="{ height: `${height}px` }">
+  <el-container class="user" :style="{ height: height }">
     <el-avatar
       class="avatar"
-      :size="height">
+      :style="{ height: height, width: height }">
       <avatar />
     </el-avatar>
     <el-row class="info">
@@ -21,10 +21,10 @@ import { defineComponent } from 'vue'
 
 export default defineComponent({
   name: 'UserInfo',
-  setup() {
-    const height = 60
-    return {
-      height
+  props: {
+    height: {
+      type: String,
+      default: '60px'
     }
   }
 })
@@ -32,13 +32,14 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .user {
-  margin-bottom: 15px;
   .avatar {
     padding: 10px;
+    flex-grow: 0;
   }
   .info {
     text-align: left;
     padding-left: 15px;
+    flex-grow: 1;
     &-name {
       flex-grow: 1;
       display: flex;

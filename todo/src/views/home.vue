@@ -1,10 +1,14 @@
 <template>
   <el-container class="home">
     <el-aside class="aside" width="350px">
-      <user-info />
-      <group-capsule />
+      <user-info height="60px"></user-info>
+      <group-capsule
+        height="calc(100% - 60px)"
+        :currentSelectedId="currentSelectedId"
+        :change="changeId">
+      </group-capsule>
     </el-aside>
-    <el-main class="main">
+    <el-main class="main" >
 
     </el-main>
   </el-container>
@@ -13,7 +17,7 @@
 <script lang="ts">
 import UserInfo from '../components/userInfo.vue'
 import GroupCapsule from '../components/groupCapsule.vue'
-import { defineComponent } from 'vue'
+import { defineComponent, ref } from 'vue'
 
 export default defineComponent({
   name: 'HomeView',
@@ -21,9 +25,18 @@ export default defineComponent({
     GroupCapsule,
     UserInfo
   },
-  props: {
+  setup() {
+    let currentSelectedId = ref<number>(0)
 
-  },
+    const changeId = (id: number): void => {
+      currentSelectedId.value = id
+    }
+
+    return {
+      currentSelectedId,
+      changeId
+    }
+  }
 })
 </script>
 
@@ -33,7 +46,11 @@ export default defineComponent({
 .home {
   height: 100%;
   .aside {
-    padding: 10px 20px;
+    padding: 10px 20px 0 20px;
+  }
+  .main {
+    background: linear-gradient(-45deg, #788CDE, #6579C8);
+    border-radius: 10px 0 0 10px;
   }
 }
 </style>

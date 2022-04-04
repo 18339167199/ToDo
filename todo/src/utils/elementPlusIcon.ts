@@ -4,7 +4,7 @@ import { App } from 'vue'
 const registerIcon= (app: App<Element>): App<Element> => {
   let name: string
   for(name in icons) {
-    app.component(name, (<any>icons)[name])
+    app.component(name, (<never>icons)[name])
   }
 
   return app

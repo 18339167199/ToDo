@@ -1,6 +1,6 @@
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse, Method } from 'axios'
-import { ElLoading, ElMessageBox, MessageBoxData } from 'element-plus'
-import { LoadingInstance } from 'element-plus/lib/components/loading/src/loading'
+import { ElMessageBox, MessageBoxData } from 'element-plus'
+import { SUCCESS_CODE } from '@/config/requestCode'
 
 type MessageBoxType = 'success' | 'info' | 'warning' | 'error'
 
@@ -8,13 +8,13 @@ export class Request {
 
   public static axiosInstance: AxiosInstance
 
-  public static loading: LoadingInstance
+  // private static loading: LoadingInstance
 
-  private static BASE_URL = '/api'
+  private static BASE_URL = '/data'
   
   private static TIME_OUT = 5000
   
-  private static LOADING_TEXT = 'Loading'
+  // private static LOADING_TEXT = 'LOADING'
 
   private static openMessageBox = (type: MessageBoxType, message: string): Promise<MessageBoxData> => {
     return ElMessageBox({
@@ -24,7 +24,7 @@ export class Request {
     })
   }
 
-  private static initInterceptors(loadingText: string) {
+  private static initInterceptors() {
     this.axiosInstance.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'
 
     /**
@@ -32,11 +32,11 @@ export class Request {
      * 1. 请求发起时，打开 loading
      */
     this.axiosInstance.interceptors.request.use((config: AxiosRequestConfig) => {
-      this.loading = ElLoading.service({
-        lock: true,
-        text: loadingText,
-        background: 'rgba(0, 0, 0, 0.5)'
-      })
+      // this.loading = ElLoading.service({
+      //   lock: true,
+      //   text: loadingText,
+      //   background: 'rgba(0, 0, 0, 0.5)'
+      // })
       return config
     }, error => {
       console.error(error)
@@ -47,15 +47,15 @@ export class Request {
      * 响应拦截器
      */
     this.axiosInstance.interceptors.response.use((response: AxiosResponse) => {
-      this.loading?.close()
-      if (response.status !== 200) {
+      // this.loading?.close()
+      if (response.status == SUCCESS_CODE) {
         this.handleErrorCode(response)
       }
       return response
     }, error => {
       console.error(error)
       this.openMessageBox('error', error)
-      this.loading?.close()
+      // this.loading?.close()
     })
   }
 
@@ -74,16 +74,16 @@ export class Request {
   }
 
   static {
-    const { BASE_URL, TIME_OUT, LOADING_TEXT } = this
+    const { BASE_URL, TIME_OUT } = this
     this.axiosInstance = axios.create({
       baseURL: BASE_URL,
       timeout: TIME_OUT
     })
-    this.initInterceptors(LOADING_TEXT)
+    this.initInterceptors()
   }
 }
 
-export function request(url: string, method: Method, data?: any) {
+export function request(url: string, method: Method, data?: unknown) {
   return Request.axiosInstance({
     method,
     url,
