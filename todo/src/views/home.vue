@@ -4,12 +4,12 @@
       <user-info height="60px"></user-info>
       <group-capsule
         height="calc(100% - 60px)"
-        :currentSelectedId="currentSelectedId"
-        :change="changeId">
+        :currentSelectedGroup="currentSelectedGroup"
+        :change="changeGroup">
       </group-capsule>
     </el-aside>
-    <el-main class="main" >
-
+    <el-main class="main">
+      <todo-list :currentSelectedGroup="currentSelectedGroup"></todo-list>
     </el-main>
   </el-container>
 </template>
@@ -17,24 +17,34 @@
 <script lang="ts">
 import UserInfo from '../components/userInfo.vue'
 import GroupCapsule from '../components/groupCapsule.vue'
+import TodoList from '../components/todoList.vue'
 import { defineComponent, ref } from 'vue'
+import { Group } from '../types/types'
 
 export default defineComponent({
   name: 'HomeView',
   components: {
     GroupCapsule,
-    UserInfo
+    UserInfo,
+    TodoList
   },
   setup() {
-    let currentSelectedId = ref<number>(0)
+    let currentSelectedGroup = ref<Group>({
+      id: -1,
+      name: '',
+      type: 0,
+      icon: '',
+      count: -1,
+      folderId: -1
+    })
 
-    const changeId = (id: number): void => {
-      currentSelectedId.value = id
+    const changeGroup = (group: Group): void => {
+      currentSelectedGroup.value = group
     }
 
     return {
-      currentSelectedId,
-      changeId
+      currentSelectedGroup,
+      changeGroup
     }
   }
 })
@@ -49,7 +59,8 @@ export default defineComponent({
     padding: 10px 20px 0 20px;
   }
   .main {
-    background: linear-gradient(-45deg, #788CDE, #6579C8);
+    padding: 0;
+    overflow: hidden;
     border-radius: 10px 0 0 10px;
   }
 }

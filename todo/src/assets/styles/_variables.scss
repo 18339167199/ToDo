@@ -3,9 +3,13 @@ $border: 1px solid #dcdfe6;
 
 /** color **/
 $green: rgba(14, 123, 53);
+$hover-color: #EBEBEB;
 
 /** font **/
 $text-font-size: 16px;
+
+/** shape **/
+$border-radius: 4px;
 
 $default-transition-duration: .25s;
 @mixin transition($props, $duration) {

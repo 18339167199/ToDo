@@ -18,7 +18,7 @@
         <!-- 固定分组 -->
         <el-col
           :span="24"
-          :class="{'groups-item': true, 'active': group.id === currentSelectedId}"
+          :class="{ 'groups-item': true, 'active': group.id === currentSelectedGroup.id }"
           v-for="group in fixedGroups"
           :key="group.id"
           @click="change(group.id)">
@@ -32,7 +32,7 @@
         <!-- 用户分组 -->
         <el-col
           :span="24"
-          :class="{'groups-item': true, 'active': group.id === currentSelectedId}"
+          :class="{ 'groups-item': true, 'active': group.id === currentSelectedGroup.id }"
           v-for="group in customGroups"
           :key="group.id"
           @click="change(group.id)">
@@ -51,13 +51,17 @@
           v-for="(folder, name, index) in folds"
           :key="folder.id">
           <el-sub-menu :index="`${index++}`">
-            <template #title><el-icon><Menu /></el-icon><span>{{ name }}</span></template>
+            <template #title>
+              <el-icon><Menu /></el-icon>
+              <span>{{ name }}</span>
+            </template>
             <el-menu-item
               v-for="(group, ind) in folder"
               :key="group.id"
-              :class="{ 'active': group.id === currentSelectedId }"
+              :class="{ 'active': group.id === currentSelectedGroup.id }"
               :index="`${ind}`"
-              @click="change(group.id)">
+              @click="change(group.id)"
+            >
               <el-icon class="icon"><apple /></el-icon>
               {{ group.name }}
             </el-menu-item>
@@ -89,7 +93,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, reactive, onMounted, computed, toRefs } from 'vue'
+import { defineComponent, ref, reactive, onMounted, computed } from 'vue'
 import { getGroupsApi, getFolderApi } from '../api/data'
 import { SUCCESS_CODE } from '../config/requestCode'
 import { Group, Folder } from '../types/types'
@@ -101,8 +105,8 @@ export default defineComponent({
       type: String,
       default: '60px'
     },
-    currentSelectedId: {
-      type: Number,
+    currentSelectedGroup: {
+      type: Object,
       required: true
     },
     change: {
@@ -179,8 +183,6 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 @import '@/assets/styles/variables';
-$hover-color: #EBEBEB;
-$border-radius: 4px;
 
 @mixin basic-group-item {
   padding: 10px 5px 10px 10px !important;

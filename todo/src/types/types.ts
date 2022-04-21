@@ -13,7 +13,35 @@ type Folder = {
   name: string
 }
 
+type BG = {
+  background: string,
+  image: string,
+}
+
+type Sort = {
+  label: string,
+  value: string | number
+}
+
+type Task = {
+  id: string,
+  content: string,
+  expire: string,
+  done: boolean,
+  star: boolean,
+  step: [
+    {
+      seqNo: number,
+      content: string,
+      done: boolean,
+    }
+  ]
+}
+
 export {
   Group,
-  Folder
+  Folder,
+  BG,
+  Sort,
+  Task
 }
