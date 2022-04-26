@@ -1,6 +1,8 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse, Method } from 'axios'
 import { ElMessageBox, MessageBoxData } from 'element-plus'
 import { SUCCESS_CODE } from '@/config/requestCode'
+import { BASE_URL, TIME_OUT } from '@/api/config'
 
 type MessageBoxType = 'success' | 'info' | 'warning' | 'error'
 
@@ -8,13 +10,9 @@ export class Request {
 
   public static axiosInstance: AxiosInstance
 
-  // private static loading: LoadingInstance
-
-  private static BASE_URL = '/data'
+  private static BASE_URL: string = BASE_URL
   
-  private static TIME_OUT = 5000
-  
-  // private static LOADING_TEXT = 'LOADING'
+  private static TIME_OUT: number = TIME_OUT
 
   private static openMessageBox = (type: MessageBoxType, message: string): Promise<MessageBoxData> => {
     return ElMessageBox({
@@ -32,11 +30,6 @@ export class Request {
      * 1. 请求发起时，打开 loading
      */
     this.axiosInstance.interceptors.request.use((config: AxiosRequestConfig) => {
-      // this.loading = ElLoading.service({
-      //   lock: true,
-      //   text: loadingText,
-      //   background: 'rgba(0, 0, 0, 0.5)'
-      // })
       return config
     }, error => {
       console.error(error)
@@ -47,7 +40,6 @@ export class Request {
      * 响应拦截器
      */
     this.axiosInstance.interceptors.response.use((response: AxiosResponse) => {
-      // this.loading?.close()
       if (response.status == SUCCESS_CODE) {
         this.handleErrorCode(response)
       }
@@ -55,7 +47,6 @@ export class Request {
     }, error => {
       console.error(error)
       this.openMessageBox('error', error)
-      // this.loading?.close()
     })
   }
 
