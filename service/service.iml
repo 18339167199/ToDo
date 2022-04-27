@@ -46,6 +46,22 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="library" name="mysql-connector-java-8.0.28" level="project" />
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../library/java/JavaWeb-json支持/commons-beanutils-1.8.0.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../../library/java/JavaWeb-json支持/commons-collections-3.2.1.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../../library/java/JavaWeb-json支持/commons-lang-2.5.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../../library/java/JavaWeb-json支持/commons-logging-1.1.1.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../../library/java/JavaWeb-json支持/ezmorph-1.0.6.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../../library/java/JavaWeb-json支持/json-lib-2.3.jar!/" />
+          <root url="file://$MODULE_DIR$/.." />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="file://$MODULE_DIR$/src" />
+        </SOURCES>
+      </library>
+    </orderEntry>
   </component>
 </module>
