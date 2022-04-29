@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse, Method } from 'axios'
+import { ApiResponse } from '@/types/types'
 import { ElMessageBox, MessageBoxData } from 'element-plus'
-import { SUCCESS_CODE } from '@/config/requestCode'
 import { BASE_URL, TIME_OUT } from '@/api/config'
 
 type MessageBoxType = 'success' | 'info' | 'warning' | 'error'
@@ -14,20 +14,17 @@ export class Request {
   
   private static TIME_OUT: number = TIME_OUT
 
-  private static openMessageBox = (type: MessageBoxType, message: string): Promise<MessageBoxData> => {
-    return ElMessageBox({
-      type,
-      message,
-      title: 'Error'
-    })
-  }
-
+  private static openMessageBox = (type: MessageBoxType, message: string): Promise<MessageBoxData> => ElMessageBox({
+    type,
+    message,
+    title: 'Error'
+  })
+  
   private static initInterceptors() {
     this.axiosInstance.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'
 
     /**
      * 请求拦截器
-     * 1. 请求发起时，打开 loading
      */
     this.axiosInstance.interceptors.request.use((config: AxiosRequestConfig) => {
       return config
@@ -39,8 +36,8 @@ export class Request {
     /**
      * 响应拦截器
      */
-    this.axiosInstance.interceptors.response.use((response: AxiosResponse) => {
-      if (response.status == SUCCESS_CODE) {
+    this.axiosInstance.interceptors.response.use((response: AxiosResponse<ApiResponse>) => {
+      if (response.status !== 200) {
         this.handleErrorCode(response)
       }
       return response
@@ -50,7 +47,7 @@ export class Request {
     })
   }
 
-  private static handleErrorCode(response: AxiosResponse) {
+  private static handleErrorCode(response: AxiosResponse<ApiResponse>) {
     switch (response.status) {
       case 401:
       case 403:
@@ -74,10 +71,11 @@ export class Request {
   }
 }
 
-export function request(url: string, method: Method, data?: unknown) {
-  return Request.axiosInstance({
-    method,
-    url,
-    data
+export function request (url: string, method: Method, data?: any): Promise<ApiResponse> {
+  return new Promise<ApiResponse>((resolve, reject) => {
+    Request.axiosInstance({ method, url, data }).then(
+      resp => resolve(resp.data),
+      err => reject(err)
+    )
   })
 }

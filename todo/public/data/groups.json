@@ -1,107 +1,105 @@
-{
-  "groups": [
-    {
-      "id": 1,
-      "name": "我的一天",
-      "type": 0,
-      "icon": "sun",
-      "count": 4,
-      "folderId": null
-    },
-    {
-      "id": 2,
-      "name": "重要",
-      "type": 0,
-      "icon": "sun",
-      "count": 4,
-      "folderId": null
-    },
-    {
-      "id": 3,
-      "name": "计划内",
-      "type": 0,
-      "icon": "sun",
-      "count": 4,
-      "folderId": null
-    },
-    {
-      "id": 4,
-      "name": "已分配给我",
-      "type": 0,
-      "icon": "sun",
-      "count": 4,
-      "folderId": null
-    },
-    {
-      "id": 5,
-      "name": "任务",
-      "type": 0,
-      "icon": "sun",
-      "count": 4,
-      "folderId": null
-    },
-    {
-      "id": 6,
-      "name": "入门",
-      "type": 1,
-      "icon": "sun",
-      "count": 4
-    },
-    {
-      "id": 7,
-      "name": "杂货",
-      "type": 1,
-      "icon": "sun",
-      "count": 4,
-      "folderId": null
-    },
-    {
-      "id": 8,
-      "name": "group-1",
-      "type": 1,
-      "icon": "sun",
-      "count": 4,
-      "folderId": null
-    },
-    {
-      "id": 9,
-      "name": "group-2",
-      "type": 1,
-      "icon": "sun",
-      "count": 4,
-      "folderId": null
-    },
-    {
-      "id": 10,
-      "name": "文件夹-1-item",
-      "type": 1,
-      "icon": "sun",
-      "count": 4,
-      "folderId": 1
-    },
-    {
-      "id": 11,
-      "name": "文件夹-1-item",
-      "type": 1,
-      "icon": "sun",
-      "count": 4,
-      "folderId": 1
-    },
-    {
-      "id": 12,
-      "name": "文件夹-2-item",
-      "type": 1,
-      "icon": "sun",
-      "count": 4,
-      "folderId": 2
-    },
-    {
-      "id": 13,
-      "name": "文件夹-2-item",
-      "type": 1,
-      "icon": "sun",
-      "count": 4,
-      "folderId": 2
-    }
-  ]
-}
+[
+  {
+    "id": 1,
+    "name": "我的一天",
+    "type": 0,
+    "icon": "sun",
+    "count": 4,
+    "folderId": null
+  },
+  {
+    "id": 2,
+    "name": "重要",
+    "type": 0,
+    "icon": "sun",
+    "count": 4,
+    "folderId": null
+  },
+  {
+    "id": 3,
+    "name": "计划内",
+    "type": 0,
+    "icon": "sun",
+    "count": 4,
+    "folderId": null
+  },
+  {
+    "id": 4,
+    "name": "已分配给我",
+    "type": 0,
+    "icon": "sun",
+    "count": 4,
+    "folderId": null
+  },
+  {
+    "id": 5,
+    "name": "任务",
+    "type": 0,
+    "icon": "sun",
+    "count": 4,
+    "folderId": null
+  },
+  {
+    "id": 6,
+    "name": "入门",
+    "type": 1,
+    "icon": "sun",
+    "count": 4
+  },
+  {
+    "id": 7,
+    "name": "杂货",
+    "type": 1,
+    "icon": "sun",
+    "count": 4,
+    "folderId": null
+  },
+  {
+    "id": 8,
+    "name": "group-1",
+    "type": 1,
+    "icon": "sun",
+    "count": 4,
+    "folderId": null
+  },
+  {
+    "id": 9,
+    "name": "group-2",
+    "type": 1,
+    "icon": "sun",
+    "count": 4,
+    "folderId": null
+  },
+  {
+    "id": 10,
+    "name": "文件夹-1-item",
+    "type": 1,
+    "icon": "sun",
+    "count": 4,
+    "folderId": 1
+  },
+  {
+    "id": 11,
+    "name": "文件夹-1-item",
+    "type": 1,
+    "icon": "sun",
+    "count": 4,
+    "folderId": 1
+  },
+  {
+    "id": 12,
+    "name": "文件夹-2-item",
+    "type": 1,
+    "icon": "sun",
+    "count": 4,
+    "folderId": 2
+  },
+  {
+    "id": 13,
+    "name": "文件夹-2-item",
+    "type": 1,
+    "icon": "sun",
+    "count": 4,
+    "folderId": 2
+  }
+]

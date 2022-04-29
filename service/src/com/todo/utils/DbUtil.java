@@ -8,28 +8,28 @@ import java.util.ResourceBundle;
  */
 public class DbUtil {
 
-    private static ResourceBundle bundle = ResourceBundle.getBundle("config/db");
+    private final static ResourceBundle BUNDLE = ResourceBundle.getBundle("config/db");
 
-    private static String driver = bundle.getString("driver");
+    private final static String DRIVER = BUNDLE.getString("driver");
 
-    private static String url = bundle.getString("url");
+    private final static String URL = BUNDLE.getString("url");
 
-    private static String user = bundle.getString("user");
+    private final static String USER = BUNDLE.getString("user");
 
-    private static String password = bundle.getString("password");
+    private final static String PASSWORD = BUNDLE.getString("password");
 
     private DbUtil() {}
 
     static {
         try {
-            Class.forName(driver);
+            Class.forName(DRIVER);
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
     }
 
     public static Connection getConnection() throws SQLException {
-        return DriverManager.getConnection(url, user, password);
+        return DriverManager.getConnection(URL, USER, PASSWORD);
     }
 
     public static void close(Connection conn, Statement stmt) {

@@ -229,9 +229,7 @@ export default defineComponent({
 
     onMounted(() => {
       getTasksApi().then(resp => {
-        if (resp && resp.status == SUCCESS_CODE) {
-          tasks.value = resp.data
-        }
+        tasks.value = (resp as any)
       })
     })
 

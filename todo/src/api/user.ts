@@ -1,10 +1,5 @@
 import { request } from "@/utils/request"
 
-export function login(data: unknown) {
-  return request(
-    '/login',
-    'post',
-    data
-  )
-}
+export const login = (data?: any) => request('/login', 'post', data)
 
+export const getCredentials = (data?: any) => request('/credentials', 'post', data)

@@ -130,11 +130,11 @@ export default defineComponent({
     }
     const getGroups = (): Promise<boolean> => new Promise<boolean>((resolve, reject) => {
       getGroupsApi().then(resp => {
-        if (resp && resp.status == SUCCESS_CODE) {
-          data.groups = resp.data.groups
+        if (resp) {
+          data.groups = (resp as any)
           resolve(true)
         } else {
-          reject(new Error(resp.status + ''))
+          reject(new Error())
         }
       }, err => {
         reject(err)
@@ -142,11 +142,11 @@ export default defineComponent({
     })
     const getFolder = (): Promise<boolean> => new Promise<boolean>((resolve, reject) => {
       getFolderApi().then(resp => {
-        if (resp && resp.status == SUCCESS_CODE) {
-          data.folders = resp.data.folders
+        if (resp) {
+          data.folders = (resp as any)
           resolve(true)
         } else {
-          reject(new Error(resp.status + ''))
+          reject(new Error(resp))
         }
       }, err => {
         reject(err)

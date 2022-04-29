@@ -1,3 +1,5 @@
+import { AxiosResponse } from 'axios'
+
 type Group = {
   id: number,
   name: string,
@@ -38,10 +40,34 @@ type Task = {
   ]
 }
 
+type UserInfo = {
+  nikeName: '',
+  realName: '',
+  phone: '',
+  country: '',
+  national: '',
+  address: '',
+  hobby: '',
+  job: '',
+  signature: '',
+  profile: '',
+  defaultGroup: '',
+  birthday: '',
+  gender: ''
+}
+
+type ApiResponse = {
+  code: number,
+  message: string,
+  data: any
+}
+
 export {
   Group,
   Folder,
   BG,
   Sort,
-  Task
+  Task,
+  UserInfo,
+  ApiResponse
 }

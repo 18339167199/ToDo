@@ -1,17 +1,16 @@
 package com.todo.servlet;
 
-import com.todo.utils.DbUtil;
+import com.alibaba.fastjson.JSON;
+import com.todo.utils.CommonResponse;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import net.sf.json.JSONArray;
-import net.sf.json.JSONObject;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.*;
+import java.util.HashMap;
 
 @WebServlet(
         name = "Test",
@@ -20,19 +19,8 @@ import java.sql.*;
 public class Test extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.setContentType("text/html");
-        PrintWriter out = resp.getWriter();
-
-        JSONArray jsonArray = new JSONArray();
-        JSONObject jsonObject = new JSONObject();
-
-        jsonObject.put("code", 0);
-        jsonObject.put("message", "success");
-
-        jsonArray.add("Lee");
-        jsonArray.add("Xi");
-        jsonObject.put("data", jsonArray);
-
-        out.println(jsonObject);
+        resp
+            .getWriter()
+            .println(new CommonResponse(1, "success", "data"));
     }
 }

@@ -4,7 +4,7 @@
       <h1>Welcome!</h1>
     </el-header>
     <el-main class="login-main">
-      <div class="login-box">
+      <div class="login-box" style="max-width: 400px;">
         <h2>Todo</h2>
         <el-row class="icon">
           <el-icon><Sugar /></el-icon>
@@ -31,7 +31,7 @@
           </el-form-item>
 
           <el-form-item>
-            <el-row style="justify-content: flex-end;">
+            <el-row style="justify-content: flex-end; width: 100%;">
               <el-button
                 size="default"
                 class="login-btn"
@@ -48,7 +48,9 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue'
+import { login, getCredentials } from '../api/user'
+import { defineComponent, ref, onMounted } from 'vue'
+import { SUCCESS_CODE } from '../config/requestCode'
 
 export default defineComponent({
   name: 'LoginView',
@@ -75,11 +77,22 @@ export default defineComponent({
       pwd: {
         required: true,
         message: '密码不能为空'
-      }
+      },
     }
     const userInputs = ref({
       user: '',
-      pwd: ''
+      pwd: '',
+      token: ''
+    })
+
+    onMounted(() => {
+      getCredentials().then(resp => {
+        // if (resp && resp.code == SUCCESS_CODE) {
+          
+        // }
+      }, (err: Error) => {
+        console.log(err)
+      })
     })
 
     return {
